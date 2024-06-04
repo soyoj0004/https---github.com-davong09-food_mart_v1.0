@@ -1,0 +1,112 @@
+{
+  "products": [
+    {
+      "product_id": 1,
+      "name": "사과",
+      "category_id": 1,
+      "price": 1000,
+      "unit_cost": 800,
+      "stock_date": "2023-06-01",
+      "image": "./images/food01.png"
+    },
+    {
+      "product_id": 2,
+      "name": "오렌지",
+      "category_id": 1,
+      "price": 2000,
+      "unit_cost": 1500,
+      "stock_date": "2023-06-02",
+      "image": "./images/food02.png"
+    },
+    {
+      "product_id": 3,
+      "name": "딸기",
+      "category_id": 1,
+      "price": 3000,
+      "unit_cost": 2500,
+      "stock_date": "2023-06-03",
+      "image": "./images/food03.png"
+    },
+    {
+      "product_id": 4,
+      "name": "포도",
+      "category_id": 1,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food04.png"
+    },
+    {
+      "product_id": 5,
+      "name": "복숭아",
+      "category_id": 1,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food05.png"
+    },
+    {
+      "product_id": 6,
+      "name": "자두",
+      "category_id": 1,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food06.png"
+    },
+    {
+      "product_id": 7,
+      "name": "소갈비",
+      "category_id": 2,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food10.png"
+    },
+    {
+      "product_id": 8,
+      "name": "삼겹살",
+      "category_id": 2,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food11.png"
+    },
+    {
+      "product_id": 9,
+      "name": "채끝살",
+      "category_id": 2,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food12.png"
+    },
+    {
+      "product_id": 10,
+      "name": "갈빗살",
+      "category_id": 2,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food13.png"
+    },
+    {
+      "product_id": 11,
+      "name": "제육복음",
+      "category_id": 2,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food14.png"
+    },
+    {
+      "product_id": 12,
+      "name": "소불고기",
+      "category_id": 2,
+      "price": 1500,
+      "unit_cost": 1200,
+      "stock_date": "2023-06-04",
+      "image": "./images/food15.png"
+    }    
+  ]
+}

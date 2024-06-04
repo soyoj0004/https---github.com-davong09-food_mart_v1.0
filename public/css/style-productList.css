@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header, footer {
+    background-color: #faebd7;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;  
+}
+
+nav.menu ul {
+    display: flex;
+    list-style: none;
+}
+
+nav.menu ul li {
+    margin: 0 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+nav.menu ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+}
+
+nav.menu ul li a:hover {
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+.social-icons {
+    display: flex;
+}
+
+.social-icons a {
+    color: #333;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+main {
+    padding: 20px;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* 가운데 정렬 */
+    margin: 0 auto; /* 여백을 자동으로 설정하여 양쪽 공간을 동일하게 만듦 */
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    width: 18%; /* 한 줄에 최대 5개의 상품 */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    max-height: 150px; /* 고정된 이미지 높이 */
+    object-fit: cover; /* 이미지가 컨테이너를 넘지 않도록 함 */
+}
+
+.product-card p {
+    margin: 10px 0;
+}
+
+.product-info {
+    flex-grow: 1; /* 텍스트 부분의 높이를 동일하게 유지 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer { /* D영역: 와이어프레임 하단영역 */
+    float: right;
+    width: 100%; /* 100% 화면너비 - 왼쪽영역 200px */
+    height: 120px;
+    background-color: #e0d4c4;
+}
+
+.bottom { /* 하단메뉴+Copyright 영역 */
+    float: left;
+    height: 120px;
+    width: 80%; /* btmenu+copy 영역을 너비의 80%로 지정 */
+}
+
+.btmenu {
+    float: left;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 50px;   
+}
+
+.btmenu ul { /* 하단메뉴 목록 리스트 */
+    text-align: center;             
+}
+
+.btmenu li { /* 하단메뉴 하위 목로  */
+    display: inline;
+}
+
+.btmenu a { /* 하단메뉴 내 a 태그 리스트 */
+    display: inline;
+}
+
+.btmenu li::after { /* 각 하위 목록 다음에 추가할 문자열 */
+    content: " | ";
+}
+
+.btmenu li:last-child::after { /* 마지막 하위 목록 다음 */
+    content: "";
+}
+
+.copy {
+    float: left;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 50px;
+}
+
+.familysite {
+    float: right;
+    width: 20%; /* familysite 영역을 너비의 20%로 지정 */
+    height: 120px;
+}
+
+.familysite select {
+    width: 200px;
+    height: 30px;
+    top: 50%;
+    font-size: 16px;
+    float: right;
+    margin-top: 45px;
+    margin-right: 100px;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .product-card {
+        width: 22%; /* 한 줄에 4개 아이템 */
+    }
+}
+
+@media (max-width: 992px) {
+    .product-card {
+        width: 30%; /* 한 줄에 3개 아이템 */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        width: 45%; /* 한 줄에 2개 아이템 */
+    }
+}
+
+@media (max-width: 576px) {
+    .product-card {
+        width: 90%; /* 한 줄에 1개 아이템 */
+    }
+}

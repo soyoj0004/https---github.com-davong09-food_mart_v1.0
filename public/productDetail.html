@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail Page</title>
+    <link rel="stylesheet" href="./css/style-detail.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html">
+            <img src="./images/logo1.png" alt="Logo" />
+            <h2>식자재</h2>
+          </a>
+        </div>
+        <nav class="menu">
+          <ul>
+            <li><a href="productList.html?category_id=1">과일채소</a></li>
+            <li><a href="productList.html?category_id=2">축산</a></li>
+            <li><a href="productList.html?category_id=3">수산</a></li>
+            <li><a href="productList.html?category_id=4">유제품</a></li>
+            <li><a href="productList.html?category_id=5">할인상품</a></li>
+          </ul>
+        </nav>
+        <div class="social-icons">
+          <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" title="Twitter">회원가입</a>
+          <a href="#" title="Twitter">로그인</a>
+          <a href="#" title="LinkedIn">관리자</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="product-detail-container">
+        <!-- 상품 정보가 JavaScript를 통해 동적으로 추가됩니다. -->
+      </div>
+    </main>
+    <footer>
+      <div class="bottom">
+        <div class="btmenu">
+          <ul>
+            <li><a href="#">하단메뉴1</a></li>
+            <li><a href="#">하단메뉴2</a></li>
+            <li><a href="#">하단메뉴3</a></li>
+            <li><a href="#">하단메뉴4</a></li>
+            <li><a href="#">하단메뉴5</a></li>
+            <li><a href="#">하단메뉴6</a></li>
+          </ul>
+        </div>
+        <div class="copy">COPYRIGHTⓒ by WEBDESIGN. ALL RIGHTS RESERVED</div>
+      </div>
+      <div class="familysite">
+        <select name="sitelist">
+          <option value="#">패밀리사이트1</option>
+          <option value="#">패밀리사이트2</option>
+          <option value="#">패밀리사이트3</option>
+        </select>
+      </div>
+    </footer>
+
+    <script>
+      const productDetailContainer = document.querySelector(
+        ".product-detail-container"
+      );
+
+      // URL의 쿼리스트링에서 product_id 가져오기
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = parseInt(urlParams.get("product_id"), 10);
+
+      // JSON 파일에서 상품 정보 읽어들이기, 파일 경로를 인자로 받음, 화면 로딩 시 실행
+      function loadProductDetailFromFile(filePath) {
+        const reader = new FileReader();
+
+        // 파일을 읽어들인 후 실행되는 함수
+        reader.onload = function (event) {
+          // 3.1. 파일의 내용을 가져옴, 파일의 내용은 JSON 문자열임
+          const result = event.target.result;
+          // 3.2. JSON 문자열을 자바스크립트 객체로 변환
+          const data = JSON.parse(result); // data : 자바스크립트 객체
+          // 3.3. JSON 객체에서 products 배열 가져오기
+          const products = data.products; // products 배열 가져오기
+
+          // product_id에 해당하는 상품 찾기
+          const product = products.find((p) => p.product_id === productId);
+
+          if (product) {
+            const productImg = document.createElement("img");
+            productImg.src = product.image;
+            productImg.alt = product.name;
+
+            const productName = document.createElement("h2");
+            productName.textContent = product.name;
+
+            const productPrice = document.createElement("p");
+            productPrice.textContent = `가격 ￦${product.price}`;
+
+            const productDescription = document.createElement("p");
+            productDescription.textContent = `입고일: ${product.stock_date}`;
+
+            const buttonContainer = document.createElement("div");
+            buttonContainer.className = "button-container";
+
+            const cartButton = document.createElement("button");
+            cartButton.className = "btn-cart";
+            cartButton.textContent = "장바구니";
+
+            const orderButton = document.createElement("button");
+            orderButton.className = "btn-order";
+            orderButton.textContent = "주문하기";
+
+            buttonContainer.appendChild(cartButton);
+            buttonContainer.appendChild(orderButton);
+
+            productDetailContainer.appendChild(productImg);
+            productDetailContainer.appendChild(productName);
+            productDetailContainer.appendChild(productPrice);
+            productDetailContainer.appendChild(productDescription);
+            productDetailContainer.appendChild(buttonContainer);
+          } else {
+            productDetailContainer.textContent = "상품을 찾을 수 없습니다.";
+          }
+        };
+
+        fetch(filePath) // 4.1. 파일 가져오기
+          .then((response) => response.blob()) // 4.2. 응답으로 받은 response 객체를 blob 객체로 변환.
+          .then((blob) => {
+            reader.readAsText(blob); // 4.3. blob 객체를 읽어서 텍스트로 변환
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      // 페이지 로드 시 상품 상세 정보 가져오기
+      window.onload = function () {
+        loadProductDetailFromFile("productData.json");
+      };
+    </script>
+  </body>
+</html>

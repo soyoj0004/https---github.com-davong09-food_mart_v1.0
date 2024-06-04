@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>알뜰식자재몰</title>
+  <link href="./css/style.css" type="text/css" rel="stylesheet">
+  <script src="./js/jquery-1.12.3.js"></script>
+  <script src="./js/script.js" defer type="text/javascript"></script>
+</head>
+<body>
+  <!--와이어프레임 왼쪽 시작-->
+  <header>
+    <div class="top">
+      <div class="logo">
+        <a href="#"><img src="images/logo.png" alt="로고"></a>
+      </div>
+      <div id="menu_bg"></div>   <!--서브메뉴 배경-->
+      <nav class="menu">
+        <ul class="navi">
+          <li><a href="productList.html?category_id=1">과일/채소</a>
+            <ul class="submenu">
+              <li><a href="#">감자/고구마</a></li>
+              <li><a href="#">버섯 종류</a></li>
+              <li><a href="#">나물 종류</a></li>
+              <li><a href="#">냉장과일</a></li>
+              <li><a href="#">냉동과일</a></li>
+            </ul>
+          </li>
+          <li><a href="productList.html?category_id=2">축산</a>
+            <ul class="submenu">
+              <li><a href="#">돼지고기</a></li>
+              <li><a href="#">소고기</a></li>
+              <li><a href="#">닭/오리고기</a></li>
+              <li><a href="#">계란</a></li>
+            </ul>
+          </li>
+          <li><a href="productList.html?category_id=3">수산</a>
+            <ul class="submenu">
+              <li><a href="#">생선</a></li>
+              <li><a href="#">조개</a></li>
+              <li><a href="#">새우</a></li>
+            </ul>
+          </li>
+          <li><a href="productList.html?category_id=4">유제품</a>
+            <ul class="submenu">
+              <li><a href="#">우유/듀유</a></li>
+              <li><a href="#">버터/마가린</a></li>
+              <li><a href="#">치즈</a></li>
+            </ul>
+          </li>          
+          <li><a href="productList.html?category_id=5">할인상품</a>
+            <ul class="submenu">
+              <li><a href="#">일회용품</a></li>
+              <li><a href="#">과자류</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!--와이어프레임 왼쪽 끝-->
+
+  <!--와이어프레임 오른쪽 시작-->
+  <div class="imgslide">
+    <div class="slidelist">
+      <ul>
+        <li>
+          <a href="#">
+            <img src="images/img1.jpg" alt="이미지1">
+            <span>여름맞이 과일 세일</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/img2.jpg" alt="이미지2">
+            <span>스낵류 균일가</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="images/img3.jpg" alt="이미지3">
+            <span>3만원 이상 구매시 전국 어디든 무료배송</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!--bodywrap: shortcut, contents(notice, gallery) 묶어줌-->
+  <div class="bodywrap"> 
+    <div class="shortcut">
+      <a href="#">
+        <img src="images/shortcut1.png" alt="바로가기1"> 
+      </a>
+      <a href="#">
+        <img src="images/shortcut2.png" alt="바로가기2">
+      </a>
+      <a href="#">
+        <img src="images/shortcut3.png" alt="바로가기3">
+      </a>
+      <a href="#">
+        <img src="images/shortcut4.png" alt="바로가기4">
+      </a>
+      <a href="#">
+        <img src="images/shortcut5.png" alt="바로가기5"> 
+      </a>
+      <a href="#">
+        <img src="images/shortcut6.png" alt="바로가기6">
+      </a>
+      <a href="#">
+        <img src="images/shortcut7.png" alt="바로가기7">
+      </a>
+    </div>
+    <div class="contents"> <!--contents: 공지사항 + 갤러리-->
+      <div class="notice">
+        <div class="tab"><h4>공지사항</h4></div>
+        <ul>
+          <li>
+            <a href="#">공지사항 1<span>2024.03.01</span></a>
+          </li>
+          <li>
+            <a href="#">공지사항 2<span>2024.03.01</span></a>
+          </li>
+          <li>
+            <a href="#">공지사항 3<span>2024.03.01</span></a>
+          </li>
+          <li>
+            <a href="#">공지사항 4<span>2024.03.01</span></a>
+          </li>
+        </ul>
+      </div> <!--notice 끝-->
+      <div class="gallery">
+        <div class="tab"><h4>갤러리</h4></div>
+        <ul>
+          <li>
+            <a href="productReview.html">
+              <img src="images/gallery1.jpg" alt="갤러리1">
+              <span>상품후기1</span>
+            </a>
+          </li>
+          <li>
+            <a href="productReview.html">
+              <img src="images/gallery2.jpg" alt="갤러리2">
+              <span>상품후기2</span>
+            </a>
+          </li>
+          <li>
+            <a href="productReview.html">
+              <img src="images/gallery3.jpg" alt="갤러리3">
+              <span>상품후기3</span>
+            </a>
+          </li>
+        </ul>
+      </div> <!--gallery 끝-->
+    </div> <!--contents 끝-->
+  </div>
+  <!--bodywrap 끝-->
+  <!--와이어프레임 오른쪽 끝-->
+
+  <div id="layer"> <!-- 레이어 팝업창 영역 -->
+    <div class="layer_up">
+      <div class="uptitle">
+        연휴기간 배송 휴무일 안내
+      </div>
+      <div class="upbody">
+        이번 연휴기간동안 배송 준비를 하지 않아 배송이 일정기간 지연될 수 있음을 안내드립니다. 배송 휴무일은 공휴일을 기준으로 합니다. 방문해주신 모든 고객 여러분 행복한 연휴 보내시길 바랍니다.
+      </div>
+      <div class="btn">닫기</div>
+    </div>
+  </div> <!-- 레이어 팝업창 영역 끝 -->
+
+  <!--와이어프레임 하단 시작-->
+  <footer>
+    <div class="bottom"> <!--bottom: 하단메뉴 + Copyright-->
+      <div class="btmenu">
+        <ul>
+          <li><a href="#">하단메뉴1</a></li> 
+          <li><a href="#">하단메뉴2</a></li> 
+          <li><a href="#">하단메뉴3</a></li> 
+          <li><a href="#">하단메뉴4</a></li> 
+          <li><a href="#">하단메뉴5</a></li> 
+          <li><a href="#">하단메뉴6</a></li>
+        </ul>
+      </div>
+      <div class="copy">
+        COPYRIGHTⓒ by WEBDESIGN. ALL RIGHTS RESERVED
+      </div>
+    </div>
+    <div class="familysite">
+      <select name="sitelist">
+        <option value="#">패밀리사이트1</option>
+        <option value="#">패밀리사이트2</option>
+        <option value="#">패밀리사이트3</option>
+      </select>
+    </div>
+  </footer>
+  <!--와이어프레임 하단 끝-->
+</body>
+</html>
+
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>제품 및 리뷰 표시</title>
+  <style>
+    .product-item, .review-item {
+      border: 1px solid #ddd;
+      margin: 5px;
+      padding: 10px;
+    }
+    .product-item img, .review-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div id="productReviewContainer"></div>
+  <div id="reviewContainer"></div>
+
+  <script>
+    const productReviewContainer = document.getElementById("productReviewContainer");
+    const reviewContainer = document.getElementById("reviewContainer");
+
+    // Provided product data
+    const products = [
+      { "product_id": 1, "name": "사과", "category_id": 1, "price": 1000, "unit_cost": 800, "stock_date": "2023-06-01", "image": "./images/food01.png" },
+      { "product_id": 2, "name": "오렌지", "category_id": 1, "price": 2000, "unit_cost": 1500, "stock_date": "2023-06-02", "image": "./images/food02.png" },
+      { "product_id": 3, "name": "딸기", "category_id": 1, "price": 3000, "unit_cost": 2500, "stock_date": "2023-06-03", "image": "./images/food03.png" },
+      { "product_id": 4, "name": "포도", "category_id": 1, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food04.png" },
+      { "product_id": 5, "name": "복숭아", "category_id": 1, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food05.png" },
+      { "product_id": 6, "name": "자두", "category_id": 1, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food06.png" },
+      { "product_id": 7, "name": "소갈비", "category_id": 2, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food10.png" },
+      { "product_id": 8, "name": "삼겹살", "category_id": 2, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food11.png" },
+      { "product_id": 9, "name": "채끝살", "category_id": 2, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food12.png" },
+      { "product_id": 10, "name": "갈빗살", "category_id": 2, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food13.png" },
+      { "product_id": 11, "name": "제육복음", "category_id": 2, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food14.png" },
+      { "product_id": 12, "name": "소불고기", "category_id": 2, "price": 1500, "unit_cost": 1200, "stock_date": "2023-06-04", "image": "./images/food15.png" }
+    ];
+
+    // Provided reviews data
+    const reviews = [
+      { productId: 1, user: "홍길동", review: "신선하고 맛있어요!", rating: 5 },
+      { productId: 2, user: "김철수", review: "질이 아주 좋아요.", rating: 4 },
+      // Add more reviews as needed
+    ];
+
+    function displayProducts() {
+      productReviewContainer.innerHTML = "";
+      products.forEach(product => {
+        const productElement = document.createElement("div");
+        productElement.classList.add("product-item");
+        productElement.innerHTML = `
+          <h3>${product.name}</h3>
+          <img src="${product.image}" alt="${product.name}">
+          <p>카테고리: ${product.category_id === 1 ? "과일채소" : "축산"}</p>
+          <p>가격: ${product.price}원</p>
+        `;
+        productReviewContainer.appendChild(productElement);
+      });
+    }
+
+    function displayReviews() {
+      reviewContainer.innerHTML = "";
+      reviews.forEach(review => {
+        const product = products.find(p => p.product_id === review.productId);
+        if (product) {
+          const reviewElement = document.createElement("div");
+          reviewElement.classList.add("review-item");
+          reviewElement.innerHTML = `
+            <h4>${product.name}</h4>
+            <img src="${product.image}" alt="${product.name}">
+            <p>작성자: ${review.user}</p>
+            <p>리뷰: ${review.review}</p>
+            <p>평점: ${review.rating} / 5</p>
+          `;
+          reviewContainer.appendChild(reviewElement);
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      displayProducts();
+      displayReviews();
+    });
+  </script>
+</body>
+</html>

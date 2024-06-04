@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Page</title>
+    <link rel="stylesheet" href="./css/style-productList.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html">
+            <img src="./images/logo1.png" alt="Logo" />
+            <h2>식자재</h2>
+          </a>
+        </div>
+        <nav class="menu">
+          <ul>
+            <li><a href="productList.html?category_id=1">과일채소</a></li>
+            <li><a href="productList.html?category_id=2">축산</a></li>
+            <li><a href="productList.html?category_id=3">수산</a></li>
+            <li><a href="productList.html?category_id=4">유제품</a></li>
+            <li><a href="productList.html?category_id=5">할인상품</a></li>
+          </ul>
+        </nav>
+        <div class="social-icons">
+          <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" title="Twitter">회원가입</a>
+          <a href="#" title="Twitter">로그인</a>
+          <a href="#" title="LinkedIn">관리자</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="product-container" id="productList">
+        <!-- 상품 목록이 JavaScript를 통해 동적으로 추가됩니다. -->
+      </div>
+    </main>
+    <footer>
+      <div class="bottom">
+        <div class="btmenu">
+          <ul>
+            <li><a href="#">하단메뉴1</a></li>
+            <li><a href="#">하단메뉴2</a></li>
+            <li><a href="#">하단메뉴3</a></li>
+            <li><a href="#">하단메뉴4</a></li>
+            <li><a href="#">하단메뉴5</a></li>
+            <li><a href="#">하단메뉴6</a></li>
+          </ul>
+        </div>
+        <div class="copy">COPYRIGHTⓒ by WEBDESIGN. ALL RIGHTS RESERVED</div>
+      </div>
+      <div class="familysite">
+        <select name="sitelist">
+          <option value="#">패밀리사이트1</option>
+          <option value="#">패밀리사이트2</option>
+          <option value="#">패밀리사이트3</option>
+        </select>
+      </div>
+    </footer>
+
+    <script>
+      /*
+      * 자바스크립트의 동작방식
+        이 페이지는 사용자가 사용자가 productList.html?category_id=2와 같은 URL 요청을 보내면
+        서버로 부터 사용자에게 이 페이지가 전달된다. 이 페이지는 사용자의 브라우저에서 실행되는데,
+        브라우저는 이 페이지의 내용을 해석하고 실행한다. 
+        
+        이때 JavaScript 코드는 URL의 쿼리스트링을 분석하여 category_id 값을 추출하고 
+        이 값을 이용하여 JSON 파일에서 상품 정보를 읽어와서 화면에 표시한다.
+        (동적으로 상품 목록을 생성한다.)
+      */
+
+      const productList = document.querySelector("#productList"); // ul 요소 가져오기
+
+      // URL의 쿼리스트링에서 category_id 가져오기
+      // 현재 페이지의 URL에서 ? 이후의 쿼리스트링 부분을 가져온다.
+      const urlParams = new URLSearchParams(window.location.search);
+
+      // urlParams.get() 메소드를 사용하여 쿼리스트링을 분석하고, category_id 값을 추출한다.
+      const categoryId = parseInt(urlParams.get("category_id"), 10);
+
+      // filePath 경로의 JSON 파일에서 상품 정보 읽어들이기
+      function loadProductsFromFile(filePath) {
+        const reader = new FileReader();
+
+        // 파일을 읽어들인 후 실행되는 함수
+        reader.onload = function (event) {
+          // 3.1. 파일의 내용을 가져옴, 파일의 내용은 JSON 문자열임
+          const result = event.target.result;
+          // 3.2. JSON 문자열을 자바스크립트 객체로 변환
+          const data = JSON.parse(result); // data : 자바스크립트 객체
+          // 3.3. JSON 객체에서 products 배열 가져오기
+          const products = data.products; // products 배열 가져오기
+
+          // 카테고리 필터링
+          const filteredProducts = products.filter(
+            (product) => product.category_id === categoryId
+          );
+
+          // 읽어들인 상품에서 특정 카테고리로 필터링된 상품 목록을 화면에 표시
+          // 자바스크립트에서 동적으로  HTML 요소를 생성하여 화면에 추가한다.
+          filteredProducts.forEach(function (product) {
+            const productCard = document.createElement("div");
+            productCard.className = "product-card";
+            //productCard.setAttribute("data-product-id", product.product_id); // data-product-id 설정
+
+            const productLink = document.createElement("a");
+            productLink.href = `productDetail.html?product_id=${product.product_id}`; // product_id 쿼리스트링 추가
+
+            const productImg = document.createElement("img");
+            productImg.src = product.image;
+            productImg.alt = product.name;
+
+            const productName = document.createElement("p");
+            productName.textContent = product.name;
+
+            productLink.appendChild(productImg);
+            productLink.appendChild(productName);
+
+            const productPrice = document.createElement("p");
+            productPrice.textContent = `가격 ￦${product.price}`;
+
+            const productDescription = document.createElement("p");
+            productDescription.textContent = `입고일: ${product.stock_date}`;
+
+            productCard.appendChild(productLink);
+            productCard.appendChild(productPrice);
+            productCard.appendChild(productDescription);
+
+            productList.appendChild(productCard);
+          });
+        };
+
+        fetch(filePath) // 4.1. 파일 가져오기
+          .then((response) => response.blob()) // 4.2. 응답으로 받은 response 객체를 blob 객체로 변환.
+          .then((blob) => {
+            reader.readAsText(blob); // 4.3. blob 객체를 읽어서 텍스트로 변환
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      // 페이지 로드 시 상품 목록 가져오기
+      window.onload = function () {
+        loadProductsFromFile("productData.json");
+      };
+    </script>
+  </body>
+</html>
